@@ -1,17 +1,18 @@
-*{padding: 0; margin: 0;box-sizing: border-box; font-family: cursive;}
+*{padding: 0; margin: 0;box-sizing: border-box; font-family: cursive;outline: none!important}
 a{
   text-decoration: none !important;
 }
 :root{
-  --main-color: #9aa802;
+  --main-color: #ff2436;
   /* 5fc76e  8d02ba  #ff1ac9 #8d2323 #0792cd #98cd07 #9aa802*/
   --white: #fff;
-  --black: #222
+  --black: #222;
+  --bg-color: #eee;
 }
 
 *::-webkit-scrollbar {
   width: 1em;
-  background: #c8c8c8;
+  background: var(--bg-color);
 }
 
 *::-webkit-scrollbar-thumb {
@@ -24,7 +25,7 @@ a{
 }
 
 body{
-  background: #c8c8c8;
+  background: var(--bg-color);
 }
 .container{
   width: 90%;
@@ -140,6 +141,7 @@ nav{
   padding: 5px;
   font-size: 24px;
   font-weight: bold;
+  cursor: pointer;
 }
 .navbar-links li a:after{
   content: '';
@@ -189,23 +191,27 @@ header .description button{
   cursor: pointer;
   background: transparent;
   position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 header .description button:after{
   content: '';
   position: absolute;
   top:50%;left: 50%;
   width:0;height: 0;
+  z-index: -1;
   transform: translate(-50%, -50%);
   background: var(--main-color);
-  z-index: -1;
-  transition: all .3s ease;
+  transition: all .8s ease;
 }
 header .description button:hover{
   border-color: var(--main-color);
 }
 header .description button:hover:after{
-  width: 100%;
-  height: 100%;
+  width: 180%;
+  height: 180%;
+  transform: translate(-50%, -50%) rotate(360deg);
+
 }
 
 
@@ -218,13 +224,11 @@ header .description button:hover:after{
   justify-content: center;
 }
 .sub-title span{
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 900;
   border-bottom: 4px solid var(--main-color);
 }
-.about{
-  background: url('../assets/images/header-bg.png')
-}
+
 .about p{
   font-size: 25px;
   text-align: center;
@@ -296,14 +300,74 @@ header .description button:hover:after{
   padding: 1px 5px;
   border: 0;
   width: 100%;
-  color: var(--black);
-  background: var(--white);
+  background: transparent;
+  border: 1px solid var(--main-color);
+  color: var(--white);
   outline: 0;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
-.product-item button:hover{
+.product-item button:after{
+  content: '';
+  position: absolute;
+  top:50%;left: 50%;
+  width:0;height: 0;
+  z-index: -1;
+  transform: translate(-50%, -50%);
   background: var(--main-color);
+  transition: all .8s ease;
+}
+.product-item button:hover:after{
+  width: 150%;
+  height: 150%;
+  transform: translate(-50%, -50%) rotate(360deg);
 
+  /* background: var(--main-color); */
+}
+
+.why-us-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 400px;
+}
+.why-us-container div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 250px;
+  margin: 1rem;
+  padding: 1rem .5rem;
+  transform: translate(0, 20px);
+
+  /* box-shadow: 0px 2px 5px var(--black); */
+}
+.why-us-container div:nth-child(2) {
+  background: var(--main-color);
+  box-shadow: 0 5px 5px var(--black);
+  transform: translate(0, -20px);
+}
+.why-us-container div:hover {
+  background: var(--main-color);
+  box-shadow: 0 5px 5px var(--black);
+}
+.why-us-container div img{
+  display: block;
+  width: 220px;
+  height: 220px;
+  margin: auto;
+  border-radius: 50%;
+}
+.why-us-container div h3{
+  margin: 20px auto;
+}
+.why-us-container div p{
+  margin: 20px auto;
+  line-height: 28px;
 }
 
 footer{
@@ -330,14 +394,14 @@ footer form div{
 footer form div label{
   margin-top: 5px;
   display: block;
-  color: var(--main-color)
+  color: var(--white)
 }
 footer form div input:not([type="submit"]), footer form div textarea{
-  padding: 5px;
+  padding: 8px 5px;
   display: block;
   width: 100%;
   background: transparent;
-  margin-left: 5px;
+  margin: 3px 3px 3px 5px;
   border: 0;
   outline: none;
   color: var(--white);
@@ -374,6 +438,10 @@ footer form div input[type="submit"]{
   padding: 0;
   border-radius: 50%;
   margin: auto 20px;
+  box-shadow: 0 2px 5px #222;
+}
+.owl-nav button:active span{
+  box-shadow:none;
 }
 
 
@@ -397,6 +465,15 @@ footer form div input[type="submit"]{
   }
   header .description{
     width: 100%;
+  }
+  .why-us-container div:nth-child(2) {
+    background: transparent;
+    box-shadow: none;
+    transform: translate(0, 20px);
+  }
+  .why-us-container div:hover {
+    background: var(--main-color);
+    box-shadow: 0 5px 5px var(--black);
   }
   footer form{
     width: 100%;

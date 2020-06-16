@@ -48,6 +48,34 @@ function checkFavColor() {
     root.style.setProperty('--main-color', favColor);
   }
 }
+let navLinks = slctElems('.nav-link');
+let subTitles = slctElems('.sub-title');
+
+
+function handleLinkClicked(e){
+  subTitles.forEach(title => {
+    if(toggleNav && toggleNav.classList.contains('active')){
+      toggleNav.click()
+    }
+    if(e.target.dataset.to === "home"){
+      $([document.documentElement, document.body]).animate({
+        scrollTop: 0
+      }, 1000);
+      return;
+    }
+    if(title.dataset.target === e.target.dataset.to){
+      let elemClass = title.classList[1];
+      $([document.documentElement, document.body]).animate({
+        scrollTop: $("." + elemClass).offset().top - 70
+      }, 1000);
+    }
+  });
+}
+
+navLinks.forEach(link => {
+  link.addEventListener('click', handleLinkClicked)
+});
+
 window.addEventListener('scroll', handleScroll);
 $(document).ready(function(){
   checkFavColor()
@@ -69,3 +97,27 @@ $(document).ready(function(){
     }
   });
 });
+
+
+// let start = title.offsetTop;
+//
+// if(title.offsetTop > document.documentElement.scrollTop){
+//
+//   let interval = setInterval(function () {
+//     if(start > document.documentElement.scrollTop){
+//       document.documentElement.scrollTop += start
+//     } else{
+//       clearInterval(interval)
+//     }
+//   }, 1000);
+//
+// } else{
+//   let interval = setInterval(function () {
+//
+//     if(start <= document.documentElement.scrollTop){
+//       document.documentElement.scrollTop -= start
+//     } else{
+//       clearInterval(interval)
+//     }
+//   }, 1000);
+// }

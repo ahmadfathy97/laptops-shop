@@ -78,21 +78,36 @@ navLinks.forEach(link => {
 
 window.addEventListener('scroll', handleScroll);
 $(document).ready(function(){
-  checkFavColor()
+  checkFavColor();
+  handleScroll();
   $(".owl-carousel").owlCarousel({
     items: 4,
     loop: true,
     nav: true,
+    lazyLoad: true,
+    autoplayTimeout: 4000,
+    animateOut: 'fadeIn',
+    autoplay: true,
+    autoplayHoverPause: true,
     responsiveClass:true,
+    stagePadding: 20,
     responsive:{
         0:{
-            items:1
+            items:1,
+            stagePadding: 10,
         },
         850:{
-            items:2
+            items:2,
+            stagePadding: 20
+
         },
-        1200:{
-            items:4
+        1100:{
+            items:3,
+            stagePadding: 20
+        },
+        1300:{
+            items:4,
+            stagePadding: 20
         }
     }
   });

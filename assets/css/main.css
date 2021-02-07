@@ -232,6 +232,7 @@ header .description button:hover:after{
   min-width: 300px;
   margin: 20px auto;
   padding: 5px;
+  padding-top: 60px;
   display: flex;
   justify-content: center;
 }

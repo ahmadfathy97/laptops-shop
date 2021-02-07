@@ -70,6 +70,7 @@ function handleLinkClicked(e){
     //   }, 1000);
     // }
   // });
+
 }
 
 navLinks.forEach(link => {

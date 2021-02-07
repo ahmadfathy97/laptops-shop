@@ -234,7 +234,6 @@ header .description button:hover:after{
   padding: 5px;
   display: flex;
   justify-content: center;
-  padding-top: 60px;
 }
 .sub-title span{
   font-size: 35px;
@@ -452,9 +451,8 @@ footer form div input[type="submit"]{
   font-size: 22px;
 }
 footer form div input[type="submit"]:hover{
-  color: var(--main-color);
   background: var(--white);
-
+  color: var(--main-color)
 }
 
 .owl-nav{
